@@ -8,23 +8,23 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
 };
 
 gulp.task('default', ['scripts', 'templates', 'sass', 'assets', 'fonts']);
-gulp.task('scripts', function (done) {
-  gulp.src('app/scripts/**/*', { base: 'app/scripts'} )
+gulp.task('scripts', function(done) {
+  gulp.src('app/scripts/**/*', { base: 'app/scripts'})
   .pipe(gulp.dest('www/scripts'))
   .on('end', done);
 });
 
-gulp.task('fonts', function (done) {
-  gulp.src('app/fonts/**/*', { base: 'app/fonts'} )
+gulp.task('fonts', function(done) {
+  gulp.src('app/fonts/**/*', { base: 'app/fonts'})
     .pipe(gulp.dest('www/fonts'))
     .on('end', done);
 });
 
-gulp.task('templates', function (done) {
+gulp.task('templates', function(done) {
   gulp.src('./app/index.html')
     .pipe(gulp.dest('www'));
   gulp.src('app/templates/**/*', { base: 'app/templates'})
@@ -43,7 +43,7 @@ gulp.task('sass', function(done) {
 //   .pipe(gulp.dest('www/css/'))
     .on('end', done);
 });
-gulp.task('assets', function (done) {
+gulp.task('assets', function(done) {
   gulp.src('app/images/*.*').pipe(gulp.dest('www/images')).on('end', done);
 });
 gulp.task('watch', function() {
