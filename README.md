@@ -5,14 +5,15 @@ Jewelbots App for iOS/Android
 
 TBA, this is an unfinished application. If you like, you can ask us questions on Slack [here](https://wt-sara-jewelbots-com-0.run.webtask.io/jewelbots-signup).
 
-# Build in IOS
+# Build
+
 1. `gulp` - updates www folder
 2. `ionic build ios` - prepare app to be built in xcode
 3. XCode - `Product -> Archive`
 
-Basic HTML stuff can be tested in the browser with `ionic serve`, but the bluetoothle library is not
+Basic HTML stuff can be tested in the browser with `ionic serve`, but the bluetoothle library is not 
 supported in the browser or emulator, so most of your testing will need to happen on a device itself.  
-
+  
 See instructions to build and deploy to your phone [here](https://github.com/Jewelbots/jewelapp/wiki/Build-and-Deploy-for-Dev-Testing)
 
 # Dependencies
@@ -27,18 +28,18 @@ See instructions to build and deploy to your phone [here](https://github.com/Jew
 - Service 180A - Device information
     - Firmware Revision: characteristic 2A26
     - Manufacturer Name: characteristic 2A29
-
+    
 - Service 63400001-1A1E-5704-0A53-844BD14254A1 - Jewelbots Information
     - Read Friends List: characteristic 63400002-1A1E-5704-0A53-844BD14254A1 (referred to as 0002)
     - Write Friends List: characteristic 63400003-1A1E-5704-0A53-844BD14254A1 (referred to as 0003)
-
+    
 ## Friends List Data Structure
 
 - The friends will come from device as a flattened uint8array
 each "friend" is 8 bytes of the array, up to I think 16 friends
-so a if the friend list is `[1,2,3,4,5,6,7,1,2,10,11,12,13,14,15,3]` that's
+so a if the friend list is `[1,2,3,4,5,6,7,1,2,10,11,12,13,14,15,3]` that's 
 really 2 "friends" of `[1,2,3,4,5,6,7,2]` and `[2,10,11,12,13,14,15,3]`.  
-
+  
 - In practice, it will always be "full", and any unused friend "slots" will be all zeroes.  
 
 - The breakdown of each friend is first byte index, second-seventh bytes address (stored reversed), eighth byte color
@@ -86,7 +87,7 @@ On iOS, you will need to follow the same basic pattern to read a characteristic:
 5. `read()` a characteristic
 
 You have to do this even if you already know which service and characteristic you want. Trying to go straight to the `read()` will result in an error.  
-
+  
 ```js
 var result = $cordovaBluetoothle.initialize({'request': true})
 .then(function(data) {
