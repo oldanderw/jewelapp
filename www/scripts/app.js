@@ -38,7 +38,6 @@ angular.module('jewelApp',
   ])
 .run(
  ['$cordovaSplashscreen',
-  '$cordovaPushV5',
    'ionicReady',
   '$logService',
   '$timeout',
@@ -47,7 +46,6 @@ angular.module('jewelApp',
    'ionicReady',
   function (
   $cordovaSplashscreen,
-  $cordovaPushV5,
   ionicReady,
   $logService,
   $timeout,
@@ -64,27 +62,27 @@ angular.module('jewelApp',
       else {
         $logService.Log('message','bluetoothle is: ' + JSON.stringify(bluetoothle));
       }
-    $cordovaPushV5.initialize({
-     'ios': {
-        'badge' : true,
-        'sound' : true,
-        'alert' : true,
-        'parseKeys' : {
-          'applicationKey' : 'j5XHG7wZ7z62lWCT4H43220C31slqlbswptPkbbU',
-          'iosSdkKey' : '5qEip2ImNHArKNdWDnC3SYNjxFpSQG3vkZ1UOjR6'
-        }
-      }
-    }).then(function(push) {
-      //$logService.Log('message', 'This is push: ' + JSON.stringify(push));
-      return $cordovaPushV5.register();
-    }).then(function (registration) {
-      //$logService.Log('message', 'we were registered: ' + JSON.stringify(registration));
-      return $cordovaPushV5.onNotification(function (notification) {
-        //$logService.Log('message', 'we were notified: ' + JSON.stringify(notification));
-      });
-    }).then(function(notification) {
-      //$logService.Log('message', 'received push notification, data is: '+ JSON.stringify(notification));
-    });
+    // $cordovaPushV5.initialize({
+    //  'ios': {
+    //     'badge' : true,
+    //     'sound' : true,
+    //     'alert' : true,
+    //     'parseKeys' : {
+    //       'applicationKey' : 'j5XHG7wZ7z62lWCT4H43220C31slqlbswptPkbbU',
+    //       'iosSdkKey' : '5qEip2ImNHArKNdWDnC3SYNjxFpSQG3vkZ1UOjR6'
+    //     }
+    //   }
+    // }).then(function(push) {
+    //   //$logService.Log('message', 'This is push: ' + JSON.stringify(push));
+    //   return $cordovaPushV5.register();
+    // }).then(function (registration) {
+    //   //$logService.Log('message', 'we were registered: ' + JSON.stringify(registration));
+    //   return $cordovaPushV5.onNotification(function (notification) {
+    //     //$logService.Log('message', 'we were notified: ' + JSON.stringify(notification));
+    //   });
+    // }).then(function(notification) {
+    //   //$logService.Log('message', 'received push notification, data is: '+ JSON.stringify(notification));
+    // });
 
     if (navigator.contacts === undefined) {
       //$logService.Log('message', 'contacts plugin not loaded');

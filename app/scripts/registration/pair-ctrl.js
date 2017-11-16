@@ -66,6 +66,7 @@ angular.module('jewelApp.controllers')
       })
       .then(function (data) {
         $scope.model.status = 'Scanning...';
+        console.log('message', 'scan results: ' + JSON.stringify(data));
         $logService.Log('message', 'scan results: ' + JSON.stringify(data));
         for(var i=0;i < data.length; i++) {
           $scope.model.debug += JSON.stringify(data[i]);
