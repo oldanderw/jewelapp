@@ -1,5 +1,6 @@
 /* @group --------- DEFAULT ---------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,300i,700,700i%7CQuicksand:700");
 html, body {
   display: block;
   position: relative;
@@ -575,6 +576,10 @@ html, body {
 .buttons.quaternary {
   background: linear-gradient(140deg, #c61532, #ea3d59); }
 
+.buttons.beautiful {
+  background: linear-gradient(100deg, #ea3da2, #fff28c, #14c8aa);
+  color: #c6157c; }
+
 .back-button {
   float: left; }
 
@@ -1033,7 +1038,7 @@ html, body {
   max-width: 320px;
   height: auto;
   margin: 0 auto 0 auto;
-  padding: 60px 15px 120px 15px; }
+  padding: 60px 15px 60px 15px; }
 
 .dashboard.nofriends .content .friendlist h2 {
   display: block;
@@ -1877,7 +1882,7 @@ html, body {
   max-width: 320px;
   height: auto;
   margin: 0 auto 0 auto;
-  padding: 60px 15px 120px 15px; }
+  padding: 40px 15px 40px 15px; }
 
 .dashboard.hasfriends .content .friendlist h2 {
   display: block;
@@ -1972,15 +1977,32 @@ html, body {
   display: block;
   position: relative;
   float: left;
-  width: 130px;
-  height: 130px;
-  margin: 7px 7px 7px 7px;
+  width: 40px;
+  height: 40px;
+  margin: 5px 5px 5px 5px;
   padding: 0 0 0 0;
   border: solid 5px whitesmoke;
   background-color: white;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%; }
+
+.dashboard.hasfriends .content .friendlist .circle.color {
+  display: block;
+  position: relative;
+  float: left;
+  width: 25px;
+  height: 25px;
+  left: 0px;
+  top: 0px;
+  margin: 3px 3px 3px 3px;
+  padding: 0 0 0 0;
+  border: solid 4px white;
+  background-color: white;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  z-index: 1; }
 
 .dashboard.hasfriends .content .friendlist .circle .name {
   display: block;
@@ -2020,22 +2042,6 @@ html, body {
   transform: translateY(-50%);
   z-index: 2; }
 
-.dashboard.hasfriends .content .friendlist .circle .color {
-  display: block;
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  left: 0px;
-  top: 0px;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  border: solid 4px white;
-  background-color: white;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-  z-index: 1; }
-
 .dashboard.hasfriends .content .friendlist .circle.add {
   background-color: rgba(255, 255, 255, 0);
   border: solid 0px;
@@ -2056,7 +2062,7 @@ html, body {
   border: solid 4px #ff2d2d;
   background-color: white; }
 
-.dashboard.hasfriends .content .friendlist .circle.red .color {
+.dashboard.hasfriends .content .friendlist .circle.red {
   border: solid 4px #ffafbe;
   background-color: #ff2d2d; }
 
@@ -2080,7 +2086,7 @@ html, body {
   border: solid 4px #8ce66e;
   background-color: white; }
 
-.dashboard.hasfriends .content .friendlist .circle.green .color {
+.dashboard.hasfriends .content .friendlist .circle.green {
   border: solid 4px #beffaa;
   background-color: #8ce66e; }
 
@@ -2088,7 +2094,7 @@ html, body {
   border: solid 4px #5ae6e1;
   background-color: white; }
 
-.dashboard.hasfriends .content .friendlist .circle.teal .color {
+.dashboard.hasfriends .content .friendlist .circle.cyan {
   border: solid 4px #a5fffa;
   background-color: #5ae6e1; }
 
@@ -2096,7 +2102,7 @@ html, body {
   border: solid 4px #23c3f5;
   background-color: white; }
 
-.dashboard.hasfriends .content .friendlist .circle.blue .color {
+.dashboard.hasfriends .content .friendlist .circle.blue {
   border: solid 4px #a0ebff;
   background-color: #23c3f5; }
 
@@ -2115,6 +2121,29 @@ html, body {
 .dashboard.hasfriends .content .friendlist .circle.pink .color {
   border: solid 4px #ff96ff;
   background-color: magenta; }
+
+.content .friendlist .item.red {
+  background-color: rgba(255, 45, 45, 0.2);
+  color: #ff2d2d; }
+
+.content .friendlist .item.green {
+  background-color: rgba(140, 230, 110, 0.2);
+  color: #62a14d; }
+
+.content .friendlist .item.blue {
+  background-color: rgba(35, 195, 245, 0.2);
+  color: #23c3f5; }
+
+.content .friendlist .item .cyan {
+  background-color: rgba(90, 230, 225, 0.2);
+  color: #5ae6e1; }
+
+.content .friendlist .text {
+  height: 20px;
+  line-height: 20px;
+  padding-top: 7px;
+  margin-top: 7px;
+  float: left; }
 
 /* @end */
 /* @group ----- 5__tempaltes/friends/friend_editmodal.html ---------------- */
@@ -4025,4 +4054,19 @@ html, body {
   text-transform: uppercase; }
 
 /* @end */
+/* @group ----- 9__tempaltes/friends/instructions.html ---- */
+.friends-pages {
+  font-weight: 300;
+  color: black; }
+
+.friends-pages .inner-content {
+  padding-top: 70px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
+.friends-pages .header {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  color: #e1146e; }
+
 /* @end */

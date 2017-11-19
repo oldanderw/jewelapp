@@ -1,38 +1,34 @@
 {
   "name": "ng-cordova-bluetoothle",
-  "main": "./dist/ng-cordova-bluetoothle.js",
-  "version": "0.1.5",
-  "homepage": "http://github.com/Jewelbots/ng-cordova-bluetoothle",
+  "main": "./ng-cordova-bluetoothle.js",
+  "description": "AngularJS Wrapper for Phonegap / Cordova Bluetooth LE Plugin",
   "authors": [
-    "George Stocker <http://georgestocker.com>"
+    "George Stocker <http://georgestocker.com>",
+    "Rand Dusing <http://www.randdusing.com>"
   ],
-  "description": "AngularJS wrapper for the Apache Cordova / Adobe Phonegap Bluetoothle plugin",
+  "homepage": "http://github.com/randdusing/ng-cordova-bluetoothle",
   "moduleType": [
     "node"
   ],
   "keywords": [
     "ng-cordova-bluetoothle",
     "angularjs",
-    "mobile",
-    "apache cordova",
+    "bluetooth le",
+    "cordova",
     "phonegap",
-    "ionic framework"
+    "ionic"
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "node_modules"
   ],
-  "_release": "0.1.5",
+  "_release": "0fddf9d36b",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.1.5",
-    "commit": "5f9066e6cfcf2c01cdf6d45664979375080ecbb5"
+    "type": "branch",
+    "branch": "master",
+    "commit": "0fddf9d36be8ccc5346e0c71bcdb1f3cac0b4d7d"
   },
-  "_source": "https://github.com/Jewelbots/ng-cordova-bluetoothle.git",
-  "_target": "~0.1.5",
-  "_originalSource": "ng-cordova-bluetoothle"
+  "_source": "git://github.com/randdusing/ng-cordova-bluetoothle.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/randdusing/ng-cordova-bluetoothle.git"
 }
