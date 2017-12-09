@@ -1,8 +1,7 @@
 'use strict';
 angular.module('jewelApp.services')
   .factory('UserService',
-  ['$cordovaBluetoothle',
-    'ionicReady',
+  ['ionicReady',
     '$logService',
     '$q',
     '$timeout',
@@ -12,7 +11,6 @@ angular.module('jewelApp.services')
     'Parse',
     '_',
     function (
-      $cordovaBluetoothle,
       ionicReady,
       $logService,
       $q,
@@ -211,4 +209,3 @@ angular.module('jewelApp.services')
       };
       return service;
     }]);
-

@@ -14,11 +14,12 @@ angular.module('CryptoJS', [])
   });
 
 angular.module('ngCordova', ['ngCordova.plugins']);
-angular.module('ngCordovaBluetoothle');
+// angular.module('ngCordovaBluetoothle');
 angular.module('ngCordova.plugins.inAppBrowser');
 angular.module('ngCordova.plugins.contacts');
+// 'ngCordovaBluetoothle', was here
 angular.module('jewelApp.controllers', [
-  'ngCordovaBluetoothle',
+
   'ngCordova.plugins.contacts'
   ]);
 angular.module('jewelApp.services', ['jewelbots.utils', 'CryptoJS', 'Parse', 'ionic']);
@@ -54,18 +55,18 @@ angular.module('jewelApp',
     $logService.Log('message', 'platform is: ' + JSON.stringify(ionic.Platform.platform()) );
 
     ionicReady().then(function() {
-      if (!bluetoothle) {
-        $logService.Log('message', 'No bluetoothle');
-      }
-      else {
-        $logService.Log('message','bluetoothle is: ' + JSON.stringify(bluetoothle));
-      }
+      // if (!bluetoothle) {
+      //   $logService.Log('message', 'No bluetoothle');
+      // }
+      // else {
+      //   $logService.Log('message','bluetoothle is: ' + JSON.stringify(bluetoothle));
+      // }
     if (navigator.contacts === undefined) {
       //$logService.Log('message', 'contacts plugin not loaded');
     }
-    if (bluetoothle === undefined) {
-      $logService.Log('error', 'bluetoothle has not been loaded; check your cordova plugin installs!');
-    }
+    // if (bluetoothle === undefined) {
+    //   $logService.Log('error', 'bluetoothle has not been loaded; check your cordova plugin installs!');
+    // }
 
     if(window.StatusBar) {
       StatusBar.styleDefault();
@@ -209,12 +210,12 @@ angular.module('jewelApp',
       //controller: 'DashboardCtrl',
       templateUrl: 'templates/dashboard/dashboard_hasfriends.html'
     })
-    .state('friends-list', {
-      url: '/friends-list',
-      controller: 'FriendsCtrl',
-      cache: false,
-      templateUrl: 'templates/friends/friends-list.html'
-    })
+    // .state('friends-list', {
+    //   url: '/friends-list',
+    //   controller: 'FriendsCtrl',
+    //   cache: false,
+    //   templateUrl: 'templates/friends/friends-list.html'
+    // })
     //-- 5__templates/friends/friend_editmodal.html --> clicked on friend on dashboard, opens this modal to 1) change color, delete as friend
     .state('friend_editmodal', {
       url: '/friend_editmodal',
@@ -260,12 +261,12 @@ angular.module('jewelApp',
       controller: 'SettingsCtrl',
       templateUrl: 'templates/settings/settings.html'
     })
-    .state('pair', {
-      url: '/pair',
-      controller: 'PairCtrl',
-      cache: false,
-      templateUrl: 'templates/settings/pair.html'
-    })
+    // .state('pair', {
+    //   url: '/pair',
+    //   controller: 'PairCtrl',
+    //   cache: false,
+    //   templateUrl: 'templates/settings/pair.html'
+    // })
     .state('pair-success', {
       url: '/pair-success',
       controller: 'PairCtrl',

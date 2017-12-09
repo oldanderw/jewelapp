@@ -10,7 +10,6 @@ angular.module('jewelApp.controllers')
     '$state',
     '$stateParams',
     '$timeout',
-    '$cordovaBluetoothle',
     'ContactsService',
     'UserService',
     'DataService',
@@ -25,7 +24,6 @@ angular.module('jewelApp.controllers')
       $state,
       $stateParams,
       $timeout,
-      $cordovaBluetoothle,
       ContactsService,
       UserService,
       DataService,
@@ -71,27 +69,27 @@ angular.module('jewelApp.controllers')
        * for a reconnect scenario as described in $scope.getFirmwareRevision
        * but because of the problems described there, this is useless
        */
-      $scope.checkConnection = function(deviceId) {
-        return $cordovaBluetoothle.isConnected({address: deviceId})
-        .then(function(response) {
-          // response.isConnected will be true or false
-          // IF the thing was EVER connected, but not if it was NEVER
-          // so theoretically, if true, move on bc connected and if false, reconnect()
-          return $q.when(response)
-        })
-        .catch(function(err) {
-          // if we've never connected (in this session)
-          // then instead of being FALSE like a NORMAL API
-          // it throws and damn exception????????? so if the exception
-          // happens then if it's 'neverConnected', you do regular connect()
-          if(err.error === "neverConnected") {
-            return $q.when({isConnected: "neverConnected"})
-          } else {
-            // if it's not neverConnected, then, idk, shrug emoji?
-            return $q.reject(err)
-          }
-        })
-      };
+      // $scope.checkConnection = function(deviceId) {
+      //   return $cordovaBluetoothle.isConnected({address: deviceId})
+      //   .then(function(response) {
+      //     // response.isConnected will be true or false
+      //     // IF the thing was EVER connected, but not if it was NEVER
+      //     // so theoretically, if true, move on bc connected and if false, reconnect()
+      //     return $q.when(response)
+      //   })
+      //   .catch(function(err) {
+      //     // if we've never connected (in this session)
+      //     // then instead of being FALSE like a NORMAL API
+      //     // it throws and damn exception????????? so if the exception
+      //     // happens then if it's 'neverConnected', you do regular connect()
+      //     if(err.error === "neverConnected") {
+      //       return $q.when({isConnected: "neverConnected"})
+      //     } else {
+      //       // if it's not neverConnected, then, idk, shrug emoji?
+      //       return $q.reject(err)
+      //     }
+      //   })
+      // };
 
       $scope.getFirmwareRevision = function () {
         var deviceId = DataService.GetDeviceId();

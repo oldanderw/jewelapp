@@ -2,7 +2,6 @@
 angular.module('jewelApp.services')//Todo: Implement Parse.com calls
   .factory('DataService', [
     '$localStorage',
-    '$cordovaBluetoothle',
     '$logService',
     '$q',
     'Parse',

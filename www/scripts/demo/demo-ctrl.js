@@ -1,16 +1,16 @@
 'use strict';
 angular
 	.module('jewelApp.controllers')
+	// '$cordovaBluetoothle', and $cordovaBluetoothle, were here
 	.controller('DemoCtrl', [
 		'$scope',
-		'$cordovaBluetoothle',
+
 		'ionicReady',
 		'$logService',
     '$state',
     'DeviceService',
 		function(
     $scope,
-    $cordovaBluetoothle,
     ionicReady,
     $logService,
     $state,

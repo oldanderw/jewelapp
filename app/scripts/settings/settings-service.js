@@ -1,7 +1,8 @@
 'use strict';
 angular.module('jewelApp.services')
+// '$cordovaBluetoothle', and $cordovaBluetoothle, were here
   .factory('SettingsService',
-  ['$cordovaBluetoothle',
+  [
     'ionicReady',
     '$logService',
     '$q',
@@ -12,7 +13,7 @@ angular.module('jewelApp.services')
     'Parse',
     '_',
     function (
-      $cordovaBluetoothle,
+
       ionicReady,
       $logService,
       $q,

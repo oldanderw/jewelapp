@@ -1,13 +1,14 @@
 'use strict';
 angular.module('jewelApp.services')
+// '$cordovaBluetoothle', and $cordovaBluetoothle, were here
   .factory(
     'DeviceService', [
-    '$cordovaBluetoothle',
+
     'SettingsService',
     '$ionicPlatform',
     '$logService',
     function(
-    $cordovaBluetoothle,
+
     SettingsService,
     $ionicPlatform,
     $logService
@@ -71,54 +72,54 @@ angular.module('jewelApp.services')
         return !!sel.length;
       };
 
-      function initialize() {
-        $logService.Log('message', 'Ionic platform ready. Initializing BLE.');
-        return $cordovaBluetoothle.initialize(params)
-          .then(startScan, initializeError)
-        ;
-      }
+      // function initialize() {
+      //   $logService.Log('message', 'Ionic platform ready. Initializing BLE.');
+      //   return $cordovaBluetoothle.initialize(params)
+      //     .then(startScan, initializeError)
+      //   ;
+      //}
 
-      function startScan() {
-        $logService.Log('message', 'BLE Initialized. Starting scan.');
-        svc.isScanning = true;
-        return $cordovaBluetoothle.startScan(params);
-      }
+      // function startScan() {
+      //   $logService.Log('message', 'BLE Initialized. Starting scan.');
+      //   svc.isScanning = true;
+      //   return $cordovaBluetoothle.startScan(params);
+      // }
 
-      function endScan() {
-        $logService.Log('message', 'Ending BLE scan.');
-        return $cordovaBluetoothle.isScanning().then(function (scanning) {
-          if(scanning) {
-            return $cordovaBluetoothle.stopScan().then(function() {
-              svc.isScanning = false;
-            });
-          }
-          else { svc.isScanning = false; }
-        });
-      }
+      // function endScan() {
+      //   $logService.Log('message', 'Ending BLE scan.');
+      //   return $cordovaBluetoothle.isScanning().then(function (scanning) {
+      //     if(scanning) {
+      //       return $cordovaBluetoothle.stopScan().then(function() {
+      //         svc.isScanning = false;
+      //       });
+      //     }
+      //     else { svc.isScanning = false; }
+      //   });
+      // }
 
-      function processResults(dat) {
+      // function processResults(dat) {
+      //
+      //   dat.forEach(function parseResult(device) {
+      //     if(device.status !== 'scanResult') { return; }
+      //     addDevice(device);
+      //     $logService.Log('message',
+      //       'Detected ' + device.address + '.'
+      //     );
+      //   });
+      //
+      //   $logService.Log('message',
+      //     'Total of ' +  svc.devices.detected.length + ' devices.'
+      //   );
+      // }
 
-        dat.forEach(function parseResult(device) {
-          if(device.status !== 'scanResult') { return; }
-          addDevice(device);
-          $logService.Log('message',
-            'Detected ' + device.address + '.'
-          );
-        });
-
-        $logService.Log('message',
-          'Total of ' +  svc.devices.detected.length + ' devices.'
-        );
-      }
-
-      function addDevice(detected) {
-        var det = svc.devices.detected.filter(function (device) {
-          if(device.name === detected.name) { return true; }
-        });
-        if(det.length) { return; }
-        svc.devices.detected.push(detected);
-        tally();
-      }
+      // function addDevice(detected) {
+      //   var det = svc.devices.detected.filter(function (device) {
+      //     if(device.name === detected.name) { return true; }
+      //   });
+      //   if(det.length) { return; }
+      //   svc.devices.detected.push(detected);
+      //   tally();
+      // }
 
       function error(type, err) {
         $logService.Log('message',
