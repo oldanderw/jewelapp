@@ -91,82 +91,82 @@ angular.module('jewelApp.controllers')
       //   })
       // };
 
-      $scope.getFirmwareRevision = function () {
-        var deviceId = DataService.GetDeviceId();
-        var params = {address: deviceId}
-        var result = $cordovaBluetoothle.initialize({'request': true})
-        .then(function(data) {
-          //TODO: handle status disabled
-
-          /* TODO: ISSUE
-           * so if you get disconnected, you should reconnect, and in fact, if you call
-           * connect() under a circumstance where you were previously connected (but no longer are), you will
-           * *probably* (though not always reliably) get an error
-           * Okay. You would theoretically use something like the $scope.checkConnection()
-           * method above to make a decision about connecting or reconnecting, except
-           * that actually calling reconnect() doesn't seem to work in practice and is
-           * discouraged by the cordova bluetoothle library maintainer
-           * see: https://github.com/randdusing/cordova-plugin-bluetoothle#connect
-           * and: https://github.com/randdusing/cordova-plugin-bluetoothle/issues/381#issuecomment-261149151
-           *
-           * Okay, so given that, one solution is to just connect fresh every time, so
-           * theoretically you would call these two functions before each attempt
-           * $cordovaBluetoothle.disconnect(params)
-           * $cordovaBluetoothle.close(params)
-           * and of course that doesn't seem to work as expected either, potentially because
-           * there are issues with close() and ios10 according to the GH issues.
-           * so, currently, this works, but only in a situation where you open the app fresh.
-           * calling connect() when already connected doesn't *appear* to have adverse effects.
-           *
-           * another option might be having a catch-all sitch in the catch() block that
-           * will hard disconnect/close the session and offer a button to try again, similar to
-           * what happens in pair-ctrl.js
-           */
-          return $timeout($cordovaBluetoothle.connect(params))
-        })
-        .then(function(response) {
-          // discover device services and characteristics. Must do this before read.
-          // discover() doesn't work great on ios but would on android. on ios
-          // you have to walk through services() to get to characteristics() or you'll error
-          return $cordovaBluetoothle.services({address: deviceId})
-        })
-        .then(function(response) {
-          // getting characteristics for service 180A, even though we know what one we want
-          // and in a good API could go straight to the read() below shrug emoji gun emoji
-          return $cordovaBluetoothle.characteristics({address: deviceId, service: "180A"});
-        })
-        .then(function(response) {
-          // TODO: Service 180A characteristic 2A26 = Firmware Revision
-          // currently broadcasting as #CURRENT_TAG#
-          // which appears to come from https://github.com/Jewelbots/jewelbot-firmware/blob/master/src/rev.h#L3
-          // so this will need to be updated to actually function as a way to check
-          // firmware version. But when the bot can do that, this will get the firmware ver.
-          return $cordovaBluetoothle.read({address: DataService.GetDeviceId(), service: "180A", characteristic: "2A26"})
-        })
-        .then(function(response) {
-          var versionBytes = $cordovaBluetoothle.encodedStringToBytes(response.value);
-          var version = $cordovaBluetoothle.bytesToString(versionBytes);
-          // TODO: when this is workable, check against server version
-          // to kick off DFU process as necessary
-          // it also makes sense to check against a minimum firmware version
-          // before app DFU is implemented to warn them to upgrade
-          // but this can't be done until 2a26 broadcasts appropriately
-          // so obviously this would need to be updated to not hardcode a ver #
-
-          version = 0;
-          $scope.model.message += version;
-          if(DataService.FirmwareUpdateRequired(version)) {
-            $scope.model.updateRequired = "You need to update!";
-          } else {
-            $scope.model.updateRequired = "No updates required!";
-          }
-        })
-        .catch(function(err) {
-          $logService.Log('error', 'failed getFirmwareRevision: ' + JSON.stringify(err));
-          $scope.model.message += " Error getting Firmware Version: " + JSON.stringify(err);
-        });
-        return true;
-      };
+      // $scope.getFirmwareRevision = function () {
+      //   var deviceId = DataService.GetDeviceId();
+      //   var params = {address: deviceId}
+      //    var result = $cordovaBluetoothle.initialize({'request': true})
+      //   .then(function(data) {
+      //     //TODO: handle status disabled
+      //
+      //     /* TODO: ISSUE
+      //      * so if you get disconnected, you should reconnect, and in fact, if you call
+      //      * connect() under a circumstance where you were previously connected (but no longer are), you will
+      //      * *probably* (though not always reliably) get an error
+      //      * Okay. You would theoretically use something like the $scope.checkConnection()
+      //      * method above to make a decision about connecting or reconnecting, except
+      //      * that actually calling reconnect() doesn't seem to work in practice and is
+      //      * discouraged by the cordova bluetoothle library maintainer
+      //      * see: https://github.com/randdusing/cordova-plugin-bluetoothle#connect
+      //      * and: https://github.com/randdusing/cordova-plugin-bluetoothle/issues/381#issuecomment-261149151
+      //      *
+      //      * Okay, so given that, one solution is to just connect fresh every time, so
+      //      * theoretically you would call these two functions before each attempt
+      //      * $cordovaBluetoothle.disconnect(params)
+      //      * $cordovaBluetoothle.close(params)
+      //      * and of course that doesn't seem to work as expected either, potentially because
+      //      * there are issues with close() and ios10 according to the GH issues.
+      //      * so, currently, this works, but only in a situation where you open the app fresh.
+      //      * calling connect() when already connected doesn't *appear* to have adverse effects.
+      //      *
+      //      * another option might be having a catch-all sitch in the catch() block that
+      //      * will hard disconnect/close the session and offer a button to try again, similar to
+      //      * what happens in pair-ctrl.js
+      //      */
+      //     return $timeout($cordovaBluetoothle.connect(params))
+      //   })
+      //   .then(function(response) {
+      //     // discover device services and characteristics. Must do this before read.
+      //     // discover() doesn't work great on ios but would on android. on ios
+      //     // you have to walk through services() to get to characteristics() or you'll error
+      //     return $cordovaBluetoothle.services({address: deviceId})
+      //   })
+      //   .then(function(response) {
+      //     // getting characteristics for service 180A, even though we know what one we want
+      //     // and in a good API could go straight to the read() below shrug emoji gun emoji
+      //     return $cordovaBluetoothle.characteristics({address: deviceId, service: "180A"});
+      //   })
+      //   .then(function(response) {
+      //     // TODO: Service 180A characteristic 2A26 = Firmware Revision
+      //     // currently broadcasting as #CURRENT_TAG#
+      //     // which appears to come from https://github.com/Jewelbots/jewelbot-firmware/blob/master/src/rev.h#L3
+      //     // so this will need to be updated to actually function as a way to check
+      //     // firmware version. But when the bot can do that, this will get the firmware ver.
+      //     return $cordovaBluetoothle.read({address: DataService.GetDeviceId(), service: "180A", characteristic: "2A26"})
+      //   })
+      //   .then(function(response) {
+      //     var versionBytes = $cordovaBluetoothle.encodedStringToBytes(response.value);
+      //     var version = $cordovaBluetoothle.bytesToString(versionBytes);
+      //     // TODO: when this is workable, check against server version
+      //     // to kick off DFU process as necessary
+      //     // it also makes sense to check against a minimum firmware version
+      //     // before app DFU is implemented to warn them to upgrade
+      //     // but this can't be done until 2a26 broadcasts appropriately
+      //     // so obviously this would need to be updated to not hardcode a ver #
+      //
+      //     version = 0;
+      //     $scope.model.message += version;
+      //     if(DataService.FirmwareUpdateRequired(version)) {
+      //       $scope.model.updateRequired = "You need to update!";
+      //     } else {
+      //       $scope.model.updateRequired = "No updates required!";
+      //     }
+      //   })
+      //   .catch(function(err) {
+      //     $logService.Log('error', 'failed getFirmwareRevision: ' + JSON.stringify(err));
+      //     $scope.model.message += " Error getting Firmware Version: " + JSON.stringify(err);
+      //   });
+      //   return true;
+      // };
 
       $scope.allowedToAddFriends = function () {
         return UserService.HasPhoneNumber();

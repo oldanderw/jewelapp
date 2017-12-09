@@ -7,7 +7,6 @@
     "android-versions": "^1.2.1",
     "cordova-android": "6.3.0",
     "cordova-plugin-add-swift-support": "^1.7.0",
-    "cordova-plugin-bluetoothle": "^4.4.3",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-inappbrowser": "^1.7.2",
@@ -22,8 +21,8 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "ionic-plugin-keyboard": "^2.2.1",
-    "ng-cordova-bluetoothle": "git+https://github.com/Jewelbots/ng-cordova-bluetoothle.git",
-    "phonegap-plugin-push": "^2.1.0"
+    "phonegap-plugin-push": "^2.1.0",
+    "cordova-plugin-bluetoothle": "^4.4.3"
   },
   "devDependencies": {
     "bower": "^1.3.3",

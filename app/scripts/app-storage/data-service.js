@@ -5,9 +5,10 @@ angular.module('jewelApp.services')//Todo: Implement Parse.com calls
     '$logService',
     '$q',
     'Parse',
+    // $cordovaBluetoothle, was here
     function(
       $localStorage,
-      $cordovaBluetoothle,
+
       $logService,
       $q,
       Parse) {
