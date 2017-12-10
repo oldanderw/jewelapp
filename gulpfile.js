@@ -1,15 +1,21 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const bower = require('bower');
+const concat = require('gulp-concat');
+const sass = require('gulp-sass');
+const minifyCss = require('gulp-minify-css');
+const rename = require('gulp-rename');
+const sh = require('shelljs');
+const shell = require('gulp-shell');
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
+
+gulp.task('travis', ['default'], shell.task([
+  'ionic cordova platform add android',
+  'ionic cordova build android',
+]))
 
 gulp.task('default', ['scripts', 'templates', 'sass', 'assets', 'fonts']);
 gulp.task('scripts', function (done) {
