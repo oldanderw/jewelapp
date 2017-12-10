@@ -1,12 +1,11 @@
 language: node_js
 node_js:
   - "stable"
-before_install:
-  - bower install
 cache:
   directories:
     - "node_modules"
 before_script:
+  - bower install
   - npm install -g gulp-cli
   - npm install -g ionic@latest
 script: gulp travis
