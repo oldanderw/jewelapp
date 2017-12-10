@@ -7,5 +7,5 @@ cache:
 before_script:
   - bower install
   - npm install -g gulp-cli
-  - npm install -g ionic@latest
+  - npm install -g ionic@latest cordova@latest
 script: gulp travis
