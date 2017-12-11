@@ -8,4 +8,9 @@ before_script:
   - npm install -g gulp-cli
   - npm install -g ionic@latest cordova@latest
   - bower install
-script: gulp travis
+script:
+  - gulp
+  - ionic cordova platform add android
+  - ionic cordova build android
+os: osx
+sudo: required
