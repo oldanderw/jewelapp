@@ -7,6 +7,7 @@
     "android-versions": "^1.2.1",
     "cordova-android": "6.3.0",
     "cordova-plugin-add-swift-support": "^1.7.0",
+    "cordova-plugin-bluetoothle": "^4.4.3",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-inappbrowser": "^1.7.2",
@@ -62,7 +63,8 @@
         "UPDATE_API": "https://api.ionicjs.com",
         "MAX_STORE": "2"
       },
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-bluetoothle": {}
     },
     "platforms": [
       "android"
